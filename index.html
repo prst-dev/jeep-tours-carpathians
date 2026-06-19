@@ -1,22 +1,411 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Джип-тури в Карпатах з професійними гідами, безпечними маршрутами, сучасними позашляховиками та швидким бронюванням з Яремче, Татарова, Буковелю і Ворохти." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#1a4d2e" />
+    <title>Джип-тури в Карпатах | Карпатські Тури</title>
+    <link rel="preload" as="image" href="assets/images/dzhyp-cherokee-karpaty-hero.webp" />
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-mountain" viewBox="0 0 24 24"><path d="m3 20 7.2-14 4.1 7.8 1.8-3.1L21 20H3Z" /></symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.11 5.18 2 2 0 0 1 5.1 3h3a2 2 0 0 1 2 1.72c.12.91.33 1.79.62 2.64a2 2 0 0 1-.45 2.11L9.1 10.9a16 16 0 0 0 5 5l1.43-1.17a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.64.62A2 2 0 0 1 22 16.92Z" /></symbol>
+      <symbol id="icon-map" viewBox="0 0 24 24"><path d="M12 21s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z" /><path d="M12 12.2a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" /></symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2 7.5 14 3 9.6l6.2-.9L12 3Z" /></symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5" /></symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" /><path d="M12 6v6l4 2" /></symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /></symbol>
+      <symbol id="icon-camera" viewBox="0 0 24 24"><path d="M14.5 4 16 7h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3l1.5-3h5Z" /><path d="M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" /></symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z" /></symbol>
+      <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" /></symbol>
+      <symbol id="icon-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></symbol>
+    </svg>
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>One-Page Jeep Tour Landing</title>
-      <meta name="description" content="Showcases extreme Jeep tours in the Ukrainian Carpathians with detailed packages, stunning visuals, customer reviews, and easy online booking." />
-      <meta name="robots" content="noindex, nofollow" />
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
-      
-    </head>
+    <!-- HEADER -->
+    <header class="site-header" data-header>
+      <nav class="main-nav container" aria-label="Головна навігація">
+        <a class="brand" href="#top" aria-label="Карпатські Тури">
+          <svg class="icon brand-mark"><use href="#icon-mountain"></use></svg>
+          <span>Карпатські Тури</span>
+        </a>
 
-    <body>
-      
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-      
-    </body>
-  </html>
-  
+        <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" data-nav-links>
+          <a href="#about">Про нас</a>
+          <a href="#tours">Маршрути</a>
+          <a href="#how">Як це працює</a>
+          <a href="#gallery">Галерея</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <a class="btn btn-primary nav-phone" href="tel:+380123456789">
+          <svg class="icon"><use href="#icon-phone"></use></svg>
+          +380 123 456 789
+        </a>
+      </nav>
+
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+        <div class="container mobile-menu-inner">
+          <a href="#about">Про нас</a>
+          <a href="#tours">Маршрути</a>
+          <a href="#how">Як це працює</a>
+          <a href="#gallery">Галерея</a>
+          <a href="#faq">FAQ</a>
+          <a class="btn btn-primary" href="tel:+380123456789">Подзвонити</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+
+      <!-- ═══ HERO ═══ -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-layout">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Старт з Яремче · Татарів · Буковель · Ворохта</p>
+            <h1 id="hero-title">Джип-тури в&nbsp;Карпатах, куди не&nbsp;доїжджає більшість туристів</h1>
+            <p class="hero-lead">
+              Справжні позашляховики, досвідчені гіди, дикі панорами. Маршрути для сімей, пар та компаній — підберемо формат під ваш темп.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-large" href="#tours">Обрати маршрут</a>
+              <a class="btn btn-ghost-light btn-large" href="tel:+380123456789">
+                <svg class="icon"><use href="#icon-phone"></use></svg>
+                Подзвонити зараз
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ WOW STATS ═══ -->
+      <section class="wow-strip" aria-labelledby="wow-title">
+        <div class="container">
+          <div class="section-heading compact reveal">
+            <span class="section-kicker">Довіра з першого маршруту</span>
+            <h2 id="wow-title">Чому туристи обирають нас?</h2>
+          </div>
+          <div class="wow-grid">
+            <div class="wow-stat reveal"><strong data-counter data-target="500">0</strong><span>Задоволених гостей</span></div>
+            <div class="wow-stat reveal"><strong data-counter data-target="15">0</strong><span>Унікальних маршрутів</span></div>
+            <div class="wow-stat reveal"><strong data-counter data-target="4.9" data-decimal="1">0</strong><span>Середній рейтинг</span></div>
+            <div class="wow-stat reveal"><strong data-counter data-target="8">0</strong><span>Років досвіду</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ ADVENTURE WOW SECTION (NEW) ═══ -->
+      <section class="adventure-section" aria-labelledby="adventure-title">
+        <div class="adventure-bg" aria-hidden="true"></div>
+        <div class="container adventure-inner reveal">
+          <span class="section-kicker light">Карпатська пригода</span>
+          <h2 id="adventure-title">За один день ви побачите більше Карпат, ніж більшість туристів за тиждень</h2>
+          <p>Ми проведемо вас маршрутами, які недоступні звичайним туристам — по хребтах, гірських переправах і прихованих панорамах.</p>
+          <a class="btn btn-primary btn-large" href="#tours">Обрати маршрут</a>
+        </div>
+      </section>
+
+      <!-- ═══ ABOUT / FEATURES ═══ -->
+      <section class="section section-soft" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Про нас</span>
+            <h2 id="about-title">Карпатська пригода без хаосу і випадковостей</h2>
+            <p>Ми поєднуємо емоції гірської подорожі з чіткою організацією: справні авто, продумані маршрути, інструктаж і супровід.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card reveal">
+              <span class="icon-badge"><svg class="icon"><use href="#icon-map"></use></svg></span>
+              <h3>Панорамні точки</h3>
+              <p>Веземо на вершини, полонини і лісові дороги, які не видно зі стандартних туристичних маршрутів.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="icon-badge"><svg class="icon"><use href="#icon-shield"></use></svg></span>
+              <h3>Безпечний драйв</h3>
+              <p>Перед стартом проводимо інструктаж, підбираємо складність і тримаємо темп групи.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="icon-badge"><svg class="icon"><use href="#icon-users"></use></svg></span>
+              <h3>Малі групи</h3>
+              <p>До 6 гостей у джипі — більше уваги до деталей і достатньо часу на фото та відпочинок.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="icon-badge"><svg class="icon"><use href="#icon-camera"></use></svg></span>
+              <h3>Живі спогади</h3>
+              <p>На маршруті закладені зупинки для фото, краєвидів, кави в горах і коротких прогулянок.</p>
+            </article>
+          </div>
+
+          <div class="story-panel reveal">
+            <img src="assets/images/dzhyp-grand-cherokee-lisova-doroga.webp" alt="Модифікований Jeep Grand Cherokee на гірській лісовій дорозі в Карпатах" loading="lazy" />
+            <div class="story-content">
+              <span class="section-kicker">Гуцульщина · Полонини · Хребти</span>
+              <h3>Маршрути, які відчуваються як справжня карпатська експедиція</h3>
+              <p>Їдемо через лісові дороги Яремчанщини, полонини над Татаровом, оглядові точки Ворохти та панорами Чорногори. У маршрутах є місце для тиші, кави в горах і живих історій від місцевого гіда.</p>
+              <p>Можемо зробити легкий сімейний виїзд до краєвидів або довший маршрут у бік Верховини, Говерли, Хом'яка чи Піп Івана.</p>
+              <a class="btn btn-primary" href="tel:+380123456789">Отримати консультацію</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ TOURS ═══ -->
+      <section class="section" id="tours" aria-labelledby="tours-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Маршрути</span>
+            <h2 id="tours-title">Оберіть формат вашої карпатської пригоди</h2>
+            <p>Кожен маршрут має фото, рівень складності, прозору ціну і зрозумілий сценарій подорожі.</p>
+          </div>
+
+          <div class="route-grid">
+            <article class="route-card reveal">
+              <div class="route-media">
+                <img src="assets/images/girska-goydalka-panorama-karpaty.webp" alt="Велика дерев'яна гойдалка на вершині гори з панорамним видом на Карпати" loading="lazy" />
+                <span class="badge">Карпатська панорама</span>
+              </div>
+              <div class="route-body">
+                <h3>Говерла, сироварня та гірська гойдалка</h3>
+                <p>
+                  Легкий джип-тур Карпатами з панорамними видами на Говерлу.
+                  Відвідайте карпатську сироварню та зробіть незабутні фото на гірській гойдалці серед мальовничих краєвидів.
+                </p>
+                <div class="route-meta">
+                  <span><svg class="icon"><use href="#icon-shield"></use></svg>Легкий рівень</span>
+                  <span><svg class="icon"><use href="#icon-clock"></use></svg>2 години</span>
+                  <span><svg class="icon"><use href="#icon-users"></use></svg>до 6 осіб</span>
+                </div>
+                <div class="route-footer">
+                  <strong>від 3000 грн</strong>
+                  <a class="btn btn-primary" href="tel:+380123456789">Бронювати</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="route-card featured reveal">
+              <div class="route-media">
+                <img src="assets/images/panorama-karpatski-hory-hvoynyy-lis.webp" alt="Панорамний вид на Карпатські гори з густим хвойним лісом" loading="lazy" />
+                <span class="badge">Підкорення високогір'я</span>
+              </div>
+              <div class="route-body">
+                <h3>Панорами Чорногори з висоти 1400 м</h3>
+                <p>
+                  Захоплива подорож позашляховиком на висоту понад 1400 метрів.
+                  Насолодіться неймовірними панорамами Говерли, Петроса, Драгобрата, Хом'яка та Піп Івана.
+                </p>
+                <div class="route-meta">
+                  <span><svg class="icon"><use href="#icon-shield"></use></svg>Середній рівень</span>
+                  <span><svg class="icon"><use href="#icon-clock"></use></svg>3 години</span>
+                  <span><svg class="icon"><use href="#icon-users"></use></svg>до 6 осіб</span>
+                </div>
+                <div class="route-footer">
+                  <strong>від 5 000 грн</strong>
+                  <a class="btn btn-primary" href="tel:+380123456789">Бронювати</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="route-card reveal">
+              <div class="route-media">
+                <img src="assets/images/nissan-patrol-richka-karpaty.webp" alt="Чорний позашляховик Nissan Patrol біля гірської річки в Карпатах" loading="lazy" />
+                <span class="badge">Гранд Тур Карпатами</span>
+              </div>
+              <div class="route-body">
+                <h3>Найповніша джип-пригода дня</h3>
+                <p>
+                  Максимум вражень за одну поїздку.
+                  Маршрут об'єднує всі найкращі локації попередніх турів: високогірні панорами, сироварню та наймальовничіші дороги Карпат.
+                </p>
+                <div class="route-meta">
+                  <span><svg class="icon"><use href="#icon-shield"></use></svg>Складний рівень</span>
+                  <span><svg class="icon"><use href="#icon-clock"></use></svg>5 години</span>
+                  <span><svg class="icon"><use href="#icon-users"></use></svg>до 5 осіб</span>
+                </div>
+                <div class="route-footer">
+                  <strong>від 6 000 грн</strong>
+                  <a class="btn btn-primary" href="tel:+380123456789">Бронювати</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ HOW IT WORKS ═══ -->
+      <section class="section section-muted" id="how" aria-labelledby="how-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Як це працює</span>
+            <h2 id="how-title">Від першого дзвінка до вершини</h2>
+            <p>Простий процес без зайвих дій: ми беремо на себе всю організацію.</p>
+          </div>
+          <ol class="timeline">
+            <li class="reveal"><span>1</span><h3>Заявка</h3><p>Ви телефонуєте або пишете, ми уточнюємо дату, кількість гостей і бажаний рівень драйву.</p></li>
+            <li class="reveal"><span>2</span><h3>Підтвердження</h3><p>Менеджер пропонує маршрут, ціну, час старту і точку зустрічі.</p></li>
+            <li class="reveal"><span>3</span><h3>Зустріч</h3><p>Збираємося у Ворохті або домовленій точці біля Яремче, Татарова чи Буковелю.</p></li>
+            <li class="reveal"><span>4</span><h3>Інструктаж</h3><p>Пояснюємо правила безпеки, посадку, зупинки і поведінку на маршруті.</p></li>
+            <li class="reveal"><span>5</span><h3>Подорож</h3><p>Їдемо до панорам, робимо фото, короткі прогулянки і зупинки для відпочинку.</p></li>
+            <li class="reveal"><span>6</span><h3>Повернення</h3><p>Повертаємося у стартову точку, ділимося фото і допомагаємо з наступним маршрутом.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ═══ GALLERY ═══ -->
+      <section class="section section-muted" id="gallery" aria-labelledby="gallery-title">
+        <div class="container">
+          <div class="section-heading reveal">
+            <span class="section-kicker">Галерея</span>
+            <h2 id="gallery-title">Карпати в кадрі</h2>
+            <p>Реальні сцени з маршрутів біля Яремче, Ворохти, Татарова, Буковелю та Верховини.</p>
+          </div>
+          <div class="gallery-grid">
+            <button class="gallery-item tall reveal" type="button" data-lightbox-src="assets/images/lisova-gravijna-doroga-karpaty.webp" data-lightbox-alt="Лісова гравійна дорога серед хвойних дерев у Карпатах">
+              <img src="assets/images/lisova-gravijna-doroga-karpaty.webp" alt="Лісова гравійна дорога серед хвойних дерев у Карпатах" loading="lazy" />
+              <span class="gallery-caption">Лісова стежка · гравій</span>
+              <span class="gallery-zoom-hint"><svg class="icon" style="width:14px;height:14px"><use href="#icon-zoom"></use></svg> Відкрити</span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-lightbox-src="assets/images/pozashlyakhovik-lisova-stezhka-karpaty.webp" data-lightbox-alt="Синій позашляховик на крутій лісовій стежці з корінням дерев у Карпатах">
+              <img src="assets/images/pozashlyakhovik-lisova-stezhka-karpaty.webp" alt="Синій позашляховик на крутій лісовій стежці з корінням дерев у Карпатах" loading="lazy" />
+              <span class="gallery-caption">Лісова стежка · off-road</span>
+              <span class="gallery-zoom-hint"><svg class="icon" style="width:14px;height:14px"><use href="#icon-zoom"></use></svg> Відкрити</span>
+            </button>
+            <button class="gallery-item tall reveal" type="button" data-lightbox-src="assets/images/dzhyp-girskyy-strumok-lis-karpaty.webp" data-lightbox-alt="Позашляховик біля гірського струмка серед хвойного лісу в Карпатах">
+              <img src="assets/images/dzhyp-girskyy-strumok-lis-karpaty.webp" alt="Позашляховик біля гірського струмка серед хвойного лісу в Карпатах" loading="lazy" />
+              <span class="gallery-caption">Гірський струмок · ліс</span>
+              <span class="gallery-zoom-hint"><svg class="icon" style="width:14px;height:14px"><use href="#icon-zoom"></use></svg> Відкрити</span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-lightbox-src="assets/images/hirska-gravijna-doroga-hvoynyy-lis.webp" data-lightbox-alt="Гірська грунтова дорога з коліями серед хвойного лісу в Карпатах">
+              <img src="assets/images/hirska-gravijna-doroga-hvoynyy-lis.webp" alt="Гірська грунтова дорога з коліями серед хвойного лісу в Карпатах" loading="lazy" />
+              <span class="gallery-caption">Грунтова дорога · підйом</span>
+              <span class="gallery-zoom-hint"><svg class="icon" style="width:14px;height:14px"><use href="#icon-zoom"></use></svg> Відкрити</span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-lightbox-src="assets/images/kolona-dzhipiv-lisova-doroga-karpaty.webp" data-lightbox-alt="Колона позашляховиків Toyota на вузькій лісовій дорозі в Карпатах">
+              <img src="assets/images/kolona-dzhipiv-lisova-doroga-karpaty.webp" alt="Колона позашляховиків Toyota на вузькій лісовій дорозі в Карпатах" loading="lazy" />
+              <span class="gallery-caption">Колона джипів · ліс</span>
+              <span class="gallery-zoom-hint"><svg class="icon" style="width:14px;height:14px"><use href="#icon-zoom"></use></svg> Відкрити</span>
+            </button>
+            <button class="gallery-item reveal" type="button" data-lightbox-src="assets/images/nissan-patrol-offroad-boloto-karpaty.webp" data-lightbox-alt="Сірий Nissan Patrol долає багнюку на лісовій off-road дорозі в Карпатах">
+              <img src="assets/images/nissan-patrol-offroad-boloto-karpaty.webp" alt="Сірий Nissan Patrol долає багнюку на лісовій off-road дорозі в Карпатах" loading="lazy" />
+              <span class="gallery-caption">Off-road · багнюка</span>
+              <span class="gallery-zoom-hint"><svg class="icon" style="width:14px;height:14px"><use href="#icon-zoom"></use></svg> Відкрити</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ INCLUDED ═══ -->
+      <section class="section section-soft" aria-labelledby="included-title">
+        <div class="container included-layout">
+          <div class="section-heading align-left reveal">
+            <span class="section-kicker">Що входить у вартість</span>
+            <h2 id="included-title">Без прихованих доплат</h2>
+            <p>Ви отримуєте повний організований виїзд, а не просто місце в автомобілі.</p>
+          </div>
+          <ul class="included-grid reveal">
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Позашляховик</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Пальне</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Послуги гіда</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Фото на маршруті</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Інструктаж</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Страхування</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Зупинки на оглядових майданчиках</li>
+            <li><svg class="icon"><use href="#icon-check"></use></svg>Підтримка 24/7</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ═══ FAQ ═══ -->
+      <section class="section section-muted" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+          <div class="section-heading align-left reveal">
+            <span class="section-kicker">FAQ</span>
+            <h2 id="faq-title">Популярні питання</h2>
+            <p>Короткі відповіді на те, що зазвичай уточнюють перед бронюванням.</p>
+          </div>
+          <div class="faq-list reveal">
+            <details>
+              <summary>Чи потрібні права водія?</summary>
+              <p>Ні, ви їдете пасажиром з професійним водієм-гідом. Керування автомобілем гостям не передається.</p>
+            </details>
+            <details>
+              <summary>Чи можна з дітьми?</summary>
+              <p>Так, для сімей підбираємо легші маршрути без різких ділянок і з комфортними зупинками.</p>
+            </details>
+            <details>
+              <summary>Яка тривалість турів?</summary>
+              <p>Є формати на 3, 5 і 8 годин. Також можемо погодити індивідуальну тривалість.</p>
+            </details>
+            <details>
+              <summary>Що брати з собою?</summary>
+              <p>Зручне взуття, теплий шар одягу, воду, заряджений телефон і гарний настрій. У горах погода змінюється швидко.</p>
+            </details>
+            <details>
+              <summary>Чи можливий індивідуальний тур?</summary>
+              <p>Так, можемо організувати маршрут тільки для вашої компанії з окремим часом старту.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a class="brand footer-brand" href="#top" aria-label="Карпатські Тури">
+              <svg class="icon brand-mark"><use href="#icon-mountain"></use></svg>
+              <span>Карпатські Тури</span>
+            </a>
+            <p>Преміум позашляхові пригоди серед приголомшливих Українських Карпат з 2018 року.</p>
+          </div>
+          <div class="footer-col">
+            <h3>Контакти</h3>
+            <address>
+              <a href="tel:+380123456789">+380 123 456 789</a>
+            </address>
+          </div>
+          <div class="footer-col">
+            <h3>Адреса та графік</h3>
+            <address>
+              <span>смт. Ворохта</span>
+              <span>Івано-Франківська обл., 78595</span>
+              <span>Понеділок — Неділя</span>
+              <strong>8:00 — 20:00</strong>
+            </address>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Карпатські Тури. Усі права захищені.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MOBILE STICKY BAR -->
+    <div class="mobile-sticky-bar" aria-label="Швидкі дії">
+      <a href="tel:+380123456789"><svg class="icon"><use href="#icon-phone"></use></svg><span>Подзвонити</span></a>
+      <a href="https://t.me" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#icon-message"></use></svg><span>Telegram</span></a>
+      <a href="#tours"><svg class="icon"><use href="#icon-map"></use></svg><span>Маршрути</span></a>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" data-lightbox aria-hidden="true">
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Закрити">×</button>
+      <img src="" alt="" loading="lazy" data-lightbox-image />
+    </div>
+  </body>
+</html>
