@@ -1095,7 +1095,7 @@ h1 {
 
   body {
     font-size: 16px;
-    padding-bottom: 76px;
+    padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
   }
 
   .brand { font-size: 1rem; }
@@ -1153,12 +1153,13 @@ h1 {
 
   .mobile-sticky-bar {
     position: fixed;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
+    right: auto;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
     z-index: 60;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    width: min(calc(100% - 20px), 430px);
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.8fr);
     gap: 6px;
     border: 1px solid rgba(219, 230, 219, 0.9);
     border-radius: var(--radius);
@@ -1166,17 +1167,28 @@ h1 {
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 16px 48px rgba(18, 52, 30, 0.22);
     backdrop-filter: blur(14px);
+    transform: translateX(-50%);
   }
 
   .mobile-sticky-bar a {
-    display: grid;
+    display: flex;
     min-height: 52px;
-    place-items: center;
-    gap: 3px;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     border-radius: var(--radius);
     color: var(--primary);
-    font-size: 0.74rem;
+    padding: 8px 6px;
+    font-size: clamp(0.68rem, 2.9vw, 0.78rem);
     font-weight: 900;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .mobile-sticky-bar span {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .mobile-sticky-bar a:first-child { color: #ffffff; background: var(--primary); }
