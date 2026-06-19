@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Карпатські Тури">
+  <rect width="64" height="64" rx="14" fill="#1a4d2e"/>
+  <path d="M10 50 28.7 14 39 33.4 44.2 24.5 57 50H10Z" fill="none" stroke="#c8e05a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m24.3 37.2 5.1-6.3 4.7 8.7" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".95"/>
+</svg>

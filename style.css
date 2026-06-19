@@ -148,29 +148,35 @@ ul, ol { margin-top: 0; }
 .nav-links a:focus-visible { color: var(--primary); }
 
 .menu-toggle {
+  position: relative;
   display: none;
   width: 44px;
   height: 44px;
+  flex: 0 0 44px;
   border-radius: var(--radius);
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 0;
 }
 
 .menu-toggle span {
+  position: absolute;
+  left: 50%;
   display: block;
-  width: 22px;
+  width: 24px;
   height: 2px;
-  margin: 4px auto;
   border-radius: 999px;
   background: var(--foreground);
+  transform: translate(-50%, var(--line-offset, 0)) rotate(0);
+  transform-origin: center;
   transition: transform 200ms ease, opacity 200ms ease;
 }
 
-.menu-toggle.is-active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle span:nth-child(1) { --line-offset: -8px; }
+.menu-toggle span:nth-child(2) { --line-offset: 0; }
+.menu-toggle span:nth-child(3) { --line-offset: 8px; }
+.menu-toggle.is-active span:nth-child(1) { transform: translate(-50%, 0) rotate(45deg); }
 .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
-.menu-toggle.is-active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.menu-toggle.is-active span:nth-child(3) { transform: translate(-50%, 0) rotate(-45deg); }
 
 .mobile-menu { display: none; }
 
@@ -1002,11 +1008,25 @@ h1 {
   border-radius: 50%;
   color: var(--primary);
   background: #ffffff;
-  font-size: 1.8rem;
+  font-size: 0;
   line-height: 1;
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   transition: background 180ms ease, transform 180ms ease;
 }
+
+.lightbox-close::before,
+.lightbox-close::after {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transform-origin: center;
+}
+
+.lightbox-close::before { transform: rotate(45deg); }
+.lightbox-close::after { transform: rotate(-45deg); }
 
 .lightbox-close:hover { background: var(--primary-soft); transform: rotate(90deg); }
 
@@ -1167,6 +1187,21 @@ h1 {
 
   .adventure-inner h2 { font-size: clamp(2rem, 9vw, 2.8rem); }
   .adventure-inner p { font-size: 1.08rem; }
+}
+
+@media (max-width: 360px) {
+  .container { width: min(100% - 20px, var(--container)); }
+  .main-nav { gap: 10px; }
+  .brand { gap: 8px; font-size: 0.94rem; }
+  .brand-mark { width: 28px; height: 28px; }
+  .btn { padding-inline: 16px; }
+  h1 { font-size: clamp(2.12rem, 10.8vw, 2.5rem); }
+  .hero-lead { font-size: 1rem; }
+  .section-heading h2,
+  .adventure-inner h2 { font-size: clamp(1.9rem, 9vw, 2.3rem); }
+  .gallery-grid { grid-auto-rows: 220px; }
+  .lightbox { padding: 12px; }
+  .lightbox-close { top: 12px; right: 12px; width: 44px; height: 44px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
