@@ -1249,7 +1249,7 @@ h1 {
     left: 10px;
     z-index: 60;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
     border: 1px solid rgba(219, 230, 219, 0.9);
     border-radius: var(--radius);
