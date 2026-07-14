@@ -13,6 +13,17 @@
     document.head.appendChild(script);
     window.gtag("config", analyticsId, { send_page_view: true });
   }
+    // Автоматичне відстеження для всіх кнопок телефону
+  document.querySelectorAll('a[href^="tel:"]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-18294638782/WtLtCObapdAceL6RyJNE'
+        });
+      }
+    });
+  });
+
 
   if ("requestIdleCallback" in window) {
     requestIdleCallback(loadAnalytics, { timeout: 3000 });
