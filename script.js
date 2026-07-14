@@ -1,5 +1,5 @@
 (function () {
-  const analyticsId = "G-M168HMPG58";
+  const analyticsId = "AW-18294638782";
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
   window.gtag("js", new Date());
