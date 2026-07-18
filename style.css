@@ -1,7 +1,6 @@
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/dm-sans-400.ttf') format('truetype')}
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/dm-sans-700.ttf') format('truetype')}
 @font-face{font-family:'DM Sans';font-style:normal;font-weight:800;font-display:swap;src:url('assets/fonts/dm-sans-800.ttf') format('truetype')}
-@font-face{font-family:'DM Sans';font-style:normal;font-weight:900;font-display:swap;src:url('assets/fonts/dm-sans-900.ttf') format('truetype')}
 @font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/playfair-display-700.ttf') format('truetype')}
 :root {
   --background: #ffffff;
@@ -16,7 +15,7 @@
   --accent: #c8e05a;
   --accent-2: #a8c83e;
   --white: #ffffff;
-  --shadow-soft: 0 18px 55px rgba(18, 52, 30, 0.11);
+  --shadow-soft: 0 14px 40px rgba(18, 52, 30, 0.10);
   --shadow-strong: 0 28px 80px rgba(12, 40, 22, 0.22);
   --radius: 10px;
   --container: 1200px;
@@ -202,6 +201,13 @@ ul, ol { margin-top: 0; }
 .btn:hover,
 .btn:focus-visible { transform: translateY(-2px); }
 
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .btn .icon {
   width: 18px;
   height: 18px;
@@ -259,7 +265,7 @@ ul, ol { margin-top: 0; }
   margin-bottom: 12px;
   color: var(--primary-2);
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -416,7 +422,7 @@ h1 {
   display: block;
   color: var(--primary);
   font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1;
 }
 
@@ -623,7 +629,7 @@ h1 {
 }
 
 .route-card:hover .route-media img,
-.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item:hover img { transform: scale(1.03); }
 
 .badge {
   position: absolute;
@@ -888,11 +894,6 @@ h1 {
   flex-shrink: 0;
 }
 
-.included-grid li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
 
 /* ─── FAQ ─── */
 .faq-list { display: grid; gap: 12px; }
@@ -1207,6 +1208,24 @@ h1 {
   .story-panel img { min-height: 300px; }
 
   .gallery-grid { grid-auto-rows: 250px; }
+
+  .site-header,
+  .eyebrow,
+  .mobile-sticky-bar,
+  .gallery-zoom-hint { backdrop-filter: none; }
+
+  .feature-card,
+  .route-card,
+  .gallery-item { transition: none; }
+
+  .feature-card:hover,
+  .route-card:hover { transform: none; }
+
+  .route-media img,
+  .gallery-item img { transition: none; }
+
+  .route-card:hover .route-media img,
+  .gallery-item:hover img { transform: none; }
   .gallery-item.tall { grid-row: span 1; }
 
   .footer-bottom { flex-direction: column; text-align: left; }
