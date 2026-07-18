@@ -2,19 +2,55 @@
   const conversionId = "AW-18294638782";
   const conversionLabel = "WtLtCObapdAcEL6RyJNE";
   const conversionSendTo = `${conversionId}/${conversionLabel}`;
+  let analyticsRequested = false;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function gtag() {
+      window.dataLayer.push(arguments);
+    };
+
+  function loadAnalytics() {
+    if (analyticsRequested) return;
+    analyticsRequested = true;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${conversionId}`;
+    document.head.appendChild(script);
+
+    window.gtag("js", new Date());
+    window.gtag("config", conversionId);
+  }
+
+  const scheduleAnalytics = () => {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadAnalytics, { timeout: 3500 });
+    } else {
+      window.setTimeout(loadAnalytics, 2500);
+    }
+  };
+
+  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
+    window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+  });
+
+  scheduleAnalytics();
 
   function reportPhoneConversion(url) {
     let callbackCalled = false;
 
     const callback = function () {
       if (callbackCalled) return;
-
       callbackCalled = true;
 
       if (typeof url !== "undefined") {
         window.location.href = url;
       }
     };
+
+    loadAnalytics();
 
     if (typeof window.gtag === "function") {
       window.gtag("event", "conversion", {
@@ -33,13 +69,11 @@
     });
   });
 
-  // ===========================
-  // Меню
-  // ===========================
-
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const menuLinks = document.querySelectorAll(".mobile-menu a, .nav-links a");
+  const lightbox = document.querySelector("[data-lightbox]");
+  const lightboxImage = document.querySelector("[data-lightbox-image]");
 
   function setMenuOpen(isOpen) {
     if (!menuToggle || !mobileMenu) return;
@@ -47,16 +81,9 @@
     menuToggle.classList.toggle("is-active", isOpen);
     mobileMenu.classList.toggle("is-open", isOpen);
     document.body.classList.toggle("menu-open", isOpen);
-
     menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Закрити меню" : "Відкрити меню"
-    );
+    menuToggle.setAttribute("aria-label", isOpen ? "Закрити меню" : "Відкрити меню");
   }
-
-  const lightbox = document.querySelector("[data-lightbox]");
-  const lightboxImage = document.querySelector("[data-lightbox-image]");
 
   function closeLightbox() {
     if (!lightbox || !lightboxImage) return;
@@ -64,58 +91,39 @@
     lightbox.classList.remove("is-open");
     lightbox.setAttribute("aria-hidden", "true");
     document.body.classList.remove("lightbox-open");
-    lightboxImage.src = "";
+    lightboxImage.removeAttribute("src");
   }
 
   if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () =>
-      setMenuOpen(!mobileMenu.classList.contains("is-open"))
-    );
-
-    menuLinks.forEach((link) =>
-      link.addEventListener("click", () => setMenuOpen(false))
-    );
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-        closeLightbox();
-      }
-    });
+    menuToggle.addEventListener("click", () => setMenuOpen(!mobileMenu.classList.contains("is-open")));
+    menuLinks.forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
   }
 
-  // ===========================
-  // Анімація
-  // ===========================
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenuOpen(false);
+      closeLightbox();
+    }
+  });
 
   const revealItems = document.querySelectorAll(".reveal");
   const counters = document.querySelectorAll("[data-counter]");
-  const hasReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
+  const hasReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const animatedCounters = new WeakSet();
 
   function animateCounter(counter) {
     if (animatedCounters.has(counter)) return;
-
     animatedCounters.add(counter);
 
     const target = Number(counter.dataset.target || "0");
     const decimals = Number(counter.dataset.decimal || "0");
-
-    const duration = hasReducedMotion ? 0 : 1200;
+    const duration = hasReducedMotion ? 0 : 900;
     const startTime = performance.now();
 
     function tick(now) {
-      const progress = duration
-        ? Math.min((now - startTime) / duration, 1)
-        : 1;
-
+      const progress = duration ? Math.min((now - startTime) / duration, 1) : 1;
       const eased = 1 - Math.pow(1 - progress, 3);
-
       counter.textContent = (target * eased).toFixed(decimals);
-
       if (progress < 1) requestAnimationFrame(tick);
     }
 
@@ -127,25 +135,14 @@
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-
           const target = entry.target;
-
           target.classList.add("is-visible");
-
-          if (target.matches("[data-counter]")) {
-            animateCounter(target);
-          }
-
-          target
-            .querySelectorAll("[data-counter]")
-            .forEach(animateCounter);
-
+          if (target.matches("[data-counter]")) animateCounter(target);
+          target.querySelectorAll("[data-counter]").forEach(animateCounter);
           observer.unobserve(target);
         });
       },
-      {
-        threshold: 0.18,
-      }
+      { rootMargin: "120px 0px", threshold: 0.01 }
     );
 
     revealItems.forEach((item) => observer.observe(item));
@@ -155,37 +152,23 @@
     counters.forEach(animateCounter);
   }
 
-  // ===========================
-  // Lightbox
-  // ===========================
-
-  const lightboxClose = document.querySelector(
-    "[data-lightbox-close]"
-  );
+  const lightboxClose = document.querySelector("[data-lightbox-close]");
 
   function openLightbox(src, alt) {
     if (!lightbox || !lightboxImage) return;
-
     lightboxImage.src = src;
     lightboxImage.alt = alt || "";
-
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
-
     document.body.classList.add("lightbox-open");
   }
 
   document.querySelectorAll("[data-lightbox-src]").forEach((item) => {
-    item.addEventListener("click", () =>
-      openLightbox(item.dataset.lightboxSrc, item.dataset.lightboxAlt)
-    );
+    item.addEventListener("click", () => openLightbox(item.dataset.lightboxSrc, item.dataset.lightboxAlt));
   });
 
   lightboxClose?.addEventListener("click", closeLightbox);
-
   lightbox?.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-      closeLightbox();
-    }
+    if (event.target === lightbox) closeLightbox();
   });
 })();
