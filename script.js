@@ -1,73 +1,37 @@
 (function () {
-  const analyticsId = "AW-18294638782";
+  const conversionId = "AW-18294638782";
   const conversionLabel = "WtLtCObapdAceL6RyJNE";
+  const conversionSendTo = `${conversionId}/${conversionLabel}`;
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  window.gtag = window.gtag || gtag;
+  function reportPhoneConversion(url) {
+    let callbackCalled = false;
 
-  window.gtag("js", new Date());
+    const callback = function () {
+      if (callbackCalled) return;
 
-  function loadAnalytics() {
-    if (loadAnalytics.loaded) return;
-    loadAnalytics.loaded = true;
+      callbackCalled = true;
 
-    const script = document.createElement("script");
-    script.async = true;
-    script.src =
-      "https://www.googletagmanager.com/gtag/js?id=" + analyticsId;
-
-    script.onload = function () {
-      window.gtag("config", analyticsId, {
-        send_page_view: true,
-      });
+      if (typeof url !== "undefined") {
+        window.location.href = url;
+      }
     };
 
-    document.head.appendChild(script);
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: conversionSendTo,
+        event_callback: callback,
+      });
+    }
+
+    setTimeout(callback, 500);
   }
 
-  loadAnalytics();
-
-  // ===========================
-  // Відстеження натискання телефону
-  // ===========================
-
-  document.querySelectorAll('a[href^="tel:"]').forEach((button) => {
-    button.addEventListener("click", function (e) {
-
-      const phoneLink = this.getAttribute("href");
-
-      e.preventDefault();
-
-      window.gtag("event", "conversion", {
-        send_to: analyticsId + "/" + conversionLabel,
-        event_callback: function () {
-          window.location.href = phoneLink;
-        },
-      });
-
-      // якщо callback не спрацював
-      setTimeout(function () {
-        window.location.href = phoneLink;
-      }, 500);
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      reportPhoneConversion(this.href);
     });
   });
-
-  // ===========================
-  // Lazy loading Analytics
-  // ===========================
-
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(loadAnalytics, { timeout: 3000 });
-  } else {
-    window.addEventListener(
-      "load",
-      () => setTimeout(loadAnalytics, 1200),
-      { once: true }
-    );
-  }
 
   // ===========================
   // Меню
