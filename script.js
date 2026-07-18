@@ -1,6 +1,6 @@
 (function () {
   const conversionId = "AW-18294638782";
-  const conversionLabel = "WtLtCObapdAceL6RyJNE";
+  const conversionLabel = "WtLtCObapdAcEL6RyJNE";
   const conversionSendTo = `${conversionId}/${conversionLabel}`;
 
   function reportPhoneConversion(url) {
