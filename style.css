@@ -241,7 +241,7 @@ ul, ol { margin-top: 0; }
 }
 
 /* ─── SECTIONS ─── */
-.section { padding: 100px 0; }
+.section { padding: 100px 0; content-visibility: auto; contain-intrinsic-size: 1px 900px; }
 .section-soft { background: linear-gradient(180deg, #f5f9f4 0%, #ffffff 100%); }
 .section-muted { background: var(--muted); }
 
@@ -387,6 +387,8 @@ h1 {
 
 /* ─── WOW STRIP (existing stats) ─── */
 .wow-strip {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 320px;
   position: relative;
   z-index: 2;
   margin-top: -24px;
@@ -431,6 +433,8 @@ h1 {
 
 /* ─── WOW ADVENTURE SECTION (NEW) ─── */
 .adventure-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 580px;
   position: relative;
   min-height: 580px;
   overflow: hidden;
@@ -445,10 +449,16 @@ h1 {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(100deg, rgba(8, 26, 14, 0.92) 0%, rgba(14, 50, 26, 0.78) 50%, rgba(8, 22, 12, 0.55) 100%),
-    url("assets/images/karpaty-polonyna-doroga-panorama.webp") center / cover;
-  background-attachment: fixed;
+  background: linear-gradient(100deg, rgba(8, 26, 14, 0.92) 0%, rgba(14, 50, 26, 0.78) 50%, rgba(8, 22, 12, 0.55) 100%);
+}
+
+.adventure-bg img {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .adventure-inner {
@@ -1075,15 +1085,26 @@ h1 {
 
   .mobile-menu {
     display: block;
-    max-height: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
     overflow: hidden;
     border-top: 1px solid transparent;
-    transition: max-height 240ms ease, border-color 240ms ease;
+    background: rgba(255, 255, 255, 0.98);
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleY(0.96) translateY(-8px);
+    transform-origin: top;
+    transition: opacity 200ms ease, transform 200ms ease, border-color 200ms ease;
   }
 
   .mobile-menu.is-open {
     max-height: calc(100vh - var(--header-height));
     border-color: var(--line);
+    opacity: 1;
+    pointer-events: auto;
+    transform: scaleY(1) translateY(0);
     overflow-y: auto;
   }
 
@@ -1105,7 +1126,6 @@ h1 {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
 
-  .adventure-bg { background-attachment: scroll; }
 }
 
 
@@ -1264,5 +1284,4 @@ h1 {
     animation-iteration-count: 1 !important;
   }
   .reveal { opacity: 1; transform: none; }
-  .adventure-bg { background-attachment: scroll; }
 }
